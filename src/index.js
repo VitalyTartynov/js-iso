@@ -60,5 +60,4 @@ const config = {
   scene: IsoGame
 }
 
-// eslint-disable-next-line no-new
-new Game(config)
+window.game = new Game(config)

@@ -1,6 +1,6 @@
-const merge = require('webpack-merge')
-const base = require('./webpack.base')
-const TerserPlugin = require('terser-webpack-plugin')
+const merge = require('webpack-merge');
+const base = require('./webpack.base');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = merge(base, {
   mode: 'production',
@@ -23,4 +23,4 @@ module.exports = merge(base, {
       })
     ]
   }
-})
+});

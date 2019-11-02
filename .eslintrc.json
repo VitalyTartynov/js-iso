@@ -16,6 +16,7 @@
     },
     "rules": {
         "space-before-function-paren": ["error", "never"],
-        "semi": ["error", "always"]
+        "semi": ["error", "always"],
+        "no-var": "error"
     }
 }

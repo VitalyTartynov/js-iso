@@ -30,8 +30,8 @@ class IsoGame extends Scene {
 
     this.spawnTiles();
 
-    var cursors = this.input.keyboard.createCursorKeys();
-    var controlConfig = {
+    const cursors = this.input.keyboard.createCursorKeys();
+    const controlConfig = {
       camera: this.cameras.main,
       left: cursors.left,
       right: cursors.right,
@@ -56,7 +56,7 @@ class IsoGame extends Scene {
     let t;
     for (let x = 0; x < 16; x += 1) {
       for (let y = 0; y < 16; y += 1) {
-        t = this.add.isoSprite(x*38, y*38, 0, 'tile', this.isoGroup);
+        t = this.add.isoSprite(x * 38, y * 38, 0, 'tile', this.isoGroup);
         t.setInteractive();
 
         t.on('pointerover', function() {

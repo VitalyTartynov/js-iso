@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import logoImg from "./assets/logo.png";
+import tile from "../assets/tile.png";
 
 const config = {
   type: Phaser.AUTO,
@@ -15,11 +15,11 @@ const config = {
 const game = new Phaser.Game(config);
 
 function preload() {
-  this.load.image("logo", logoImg);
+  this.load.image("tile", tile);
 }
 
 function create() {
-  const logo = this.add.image(400, 150, "logo");
+  const logo = this.add.image(400, 150, "tile");
 
   this.tweens.add({
     targets: logo,

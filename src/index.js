@@ -1,7 +1,11 @@
 import Phaser, { Game, Scene } from 'phaser';
 import IsoPlugin from 'phaser3-plugin-isometric/src/IsoPlugin';
 
-import tile from '../assets/tile.png';
+//import sampletile from '../assets/tile.png';
+//import stone from '../assets/stone.png';
+import stoneblock from '../assets/stone-block.png';
+
+import { Map } from './map';
 
 class IsoGame extends Scene {
   constructor() {
@@ -14,7 +18,9 @@ class IsoGame extends Scene {
   }
 
   preload() {
-    this.load.image('tile', tile);
+    //this.load.image('tileimage', sampletile);
+    //this.load.image('tileimage', stone);
+    this.load.image('tileimage', stoneblock);
 
     this.load.scenePlugin({
       key: 'IsoPlugin',
@@ -28,7 +34,10 @@ class IsoGame extends Scene {
 
     this.iso.projector.origin.setTo(0.5, 0.1);
 
-    this.spawnTiles();
+    this.map = new Map();
+    this.map.create();
+    
+    this.drawMap(this.map);
 
     const cursors = this.input.keyboard.createCursorKeys();
     const controlConfig = {
@@ -52,22 +61,26 @@ class IsoGame extends Scene {
     this.fps.text = Math.round(this.game.loop.actualFps);
   }
 
-  spawnTiles() {
-    let t;
-    for (let x = 0; x < 16; x += 1) {
-      for (let y = 0; y < 16; y += 1) {
-        t = this.add.isoSprite(x * 38, y * 38, 0, 'tile', this.isoGroup);
-        t.setInteractive();
+  drawMap(map) {
+    let tile;
+    for (let x = 0; x < map.size; x += 1) {
+      for (let y = 0; y < map.size; y += 1) {
+        if (map.tiles[x][y].type === 1) {
+          //t = this.add.isoSprite(x * 38, y * 38, 0, 'tileimage', this.isoGroup);
+          tile = this.add.isoSprite(x * 18, y * 18, 0, 'tileimage', this.isoGroup);
 
-        t.on('pointerover', function() {
-          this.tint = 0x86bfda;
-          this.isoZ += 5;
-        });
+          tile.setInteractive();
 
-        t.on('pointerout', function() {
-          this.tint = 0xffffff;
-          this.isoZ -= 5;
-        });
+          tile.on('pointerover', function () {
+            this.tint = 0x86bfda;
+            this.isoZ += 3;
+          });
+
+          tile.on('pointerout', function () {
+            this.tint = 0xffffff;
+            this.isoZ -= 3;
+          });
+        }
       }
     }
   }
@@ -75,9 +88,12 @@ class IsoGame extends Scene {
 
 const config = {
   type: Phaser.AUTO,
-  pixelArt: true,
   disableContextMenu: true,
-  scene: IsoGame
+  render: {
+    antialias: false,
+    pixelArt: true
+  },
+  scene: [IsoGame]
 };
 
 window.game = new Game(config);

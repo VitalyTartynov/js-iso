@@ -36,7 +36,7 @@
     "webpack": "^4.41.2",
     "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.9.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^5.2.0"
   },
   "dependencies": {
     "phaser": "^3.20.1",

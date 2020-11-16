@@ -31,7 +31,7 @@
     "html-webpack-plugin": "^4.0.2",
     "husky": "^4.2.3",
     "raw-loader": "^4.0.0",
-    "standard": "^15.0.0",
+    "standard": "^16.0.2",
     "terser-webpack-plugin": "^4.1.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^4.1.0",
